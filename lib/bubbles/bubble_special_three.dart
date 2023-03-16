@@ -12,17 +12,20 @@ import 'package:flutter/material.dart';
 class BubbleSpecialThree extends StatelessWidget {
   final bool isSender;
   final String text;
+  final String? date;
   final bool tail;
   final Color color;
   final bool sent;
   final bool delivered;
   final bool seen;
   final TextStyle textStyle;
+  final TextStyle dateStyle;
 
   const BubbleSpecialThree({
     Key? key,
     this.isSender = true,
     required this.text,
+    this.date,
     this.color = Colors.white70,
     this.tail = true,
     this.sent = false,
@@ -31,6 +34,10 @@ class BubbleSpecialThree extends StatelessWidget {
     this.textStyle = const TextStyle(
       color: Colors.black87,
       fontSize: 16,
+    ),
+    this.dateStyle = const TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 11,
     ),
   }) : super(key: key);
 
@@ -88,10 +95,20 @@ class BubbleSpecialThree extends StatelessWidget {
                   padding: stateTick
                       ? const EdgeInsets.only(left: 4, right: 20)
                       : const EdgeInsets.only(left: 4, right: 4),
-                  child: Text(
-                    text,
-                    style: textStyle,
-                    textAlign: TextAlign.left,
+                  child: Column(
+                    children: [
+                      Text(
+                        text,
+                        style: textStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                      if (date != null)
+                        Text(
+                          date ?? '',
+                          style: dateStyle,
+                          textAlign: TextAlign.right,
+                        ),
+                    ],
                   ),
                 ),
                 stateIcon != null && stateTick
