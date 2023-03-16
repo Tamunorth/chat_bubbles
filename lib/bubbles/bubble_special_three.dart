@@ -96,6 +96,7 @@ class BubbleSpecialThree extends StatelessWidget {
                       ? const EdgeInsets.only(left: 4, right: 20)
                       : const EdgeInsets.only(left: 4, right: 4),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         text,
